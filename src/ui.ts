@@ -73,5 +73,34 @@ export function markeraDagensRatt(container: HTMLElement, id: number): void {
 //   - ref.tom (texten "Du har inte lagt något...") ska ha klassen "dold" när ordern INTE är tom
 //   - ref.summa.textContent = totalpriset (totalPris från meny.js), formaterat
 export function visaOrder(ref: OrderRef, order: OrderRad[], meny: Ratt[]): void {
-  // TODO
+  // Töm ref.lista innan vi fyller den
+  ref.lista.replaceChildren();
+
+  // Fyll ref.lista med order
+  for (const ord of order) {
+    // Skapa element
+    const li = document.createElement("li");
+    const antalRatter = document.createElement("span");
+    const pris = document.createElement("span");
+
+    // Hitta nuvarande rätt
+    const ratt = hittaRatt(meny, ord.id);
+
+    // Gå till nästa rätt om vi inte hittar det i menyn
+    if (!ratt) continue;
+
+    // Fyll elementen med text
+    antalRatter.textContent = `${ord.antal} × ${ratt.namn}`;
+    pris.textContent = formateraPris(ratt.pris * ord.antal);
+
+    // Lägg till orderraden
+    li.append(antalRatter, pris);
+    ref.lista.append(li);
+  }
+
+  // Tomläget
+  ref.tom.classList.toggle("dold", order.length !== 0);
+
+  //Totalpriset
+  ref.summa.textContent = formateraPris(totalPris(order, meny));
 }

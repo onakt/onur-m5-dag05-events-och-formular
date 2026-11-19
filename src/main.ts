@@ -58,4 +58,19 @@ const orderRef = {
   summa: hamta("#order-summa"),
   tom: hamta("#order-tom"),
 };
-// TODO
+let order: OrderRad[] = [];
+
+// Uppdatera order genom att lägga till något och sedan visa order
+function uppdateraOrder(id: number): void {
+  order = laggTillIOrder(order, id);
+  visaOrder(orderRef, order, meny);
+}
+kopplaLaggTill(lista, uppdateraOrder);
+
+// Hämta rensaknapp
+const rensaKnapp = hamta("#rensa-order");
+// Koppla knappen till rensaOrder() med en eventListener
+rensaKnapp.addEventListener("click", () => {
+  order = rensaOrder();
+  visaOrder(orderRef, order, meny);
+})
