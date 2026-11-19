@@ -16,9 +16,14 @@ const filterGrupp = hamta("#filter");
 // DEL 1: din första händelse -------------------------------------------
 // 1. Hämta knappen .knapp i #hero. Lägg till en lyssnare för "click" som skriver ut
 //    handelse.type och handelse.target i Console.
+const heroKnapp = document.querySelector("#hero .knapp");
+heroKnapp?.addEventListener("click", (handelse) => {
+  //handelse.preventDefault();
+  console.log(handelse.type, handelse.target);
+});
 // 2. Lägg till handelse.preventDefault() i lyssnaren. Vad händer med länken?
 //    Ta bort preventDefault igen när du provat.
-// TODO
+// Sidan hoppar inte längre till #meny! Länken togs bort?
 
 
 // DEL 2: filtret ----------------------------------------------------------
