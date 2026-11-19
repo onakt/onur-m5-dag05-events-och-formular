@@ -30,5 +30,12 @@ export function kopplaFilter(grupp: HTMLElement, vidVal: (filter: Filter) => voi
 //    Vid klick på en sådan knapp: anropa vidLaggTill(id) där id är ett TAL (dataset ger text!).
 //    Klick på något annat ska inte göra något.
 export function kopplaLaggTill(container: HTMLElement, vidLaggTill: (id: number) => void): void {
-  // TODO
+  container.addEventListener("click", (handelse) => {
+    const knapp = handelse.target.closest("button.lagg-i-order");
+    if (!knapp) {
+      return;
+    }
+
+    vidLaggTill(Number(knapp.dataset.id));
+  })
 }
