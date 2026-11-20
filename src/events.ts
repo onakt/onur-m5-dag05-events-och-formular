@@ -10,7 +10,10 @@ import type { Filter } from "./typer";
 //    Tips: handelse.target.closest('button[data-filter]')
 export function kopplaFilter(grupp: HTMLElement, vidVal: (filter: Filter) => void): void {
   grupp.addEventListener("click", (handelse) => {
-    const knapp = handelse.target.closest("button[data-filter]");
+    if (!(handelse.target instanceof HTMLElement)) {
+      return;
+    }
+    const knapp = handelse.target.closest<HTMLButtonElement>("button[data-filter]");
     if (!knapp) {
       return;
     }
@@ -21,8 +24,12 @@ export function kopplaFilter(grupp: HTMLElement, vidVal: (filter: Filter) => voi
     // klickade knappen är true
     knapp.setAttribute("aria-pressed", "true");
 
+    const filter = knapp.dataset.filter;
+    if (!filter) {
+      return;
+    }
     // anropa vidVal(knappens data-filter)
-    vidVal(knapp.dataset.filter);
+    vidVal(filter as Filter);
   });
 }
 
@@ -31,7 +38,10 @@ export function kopplaFilter(grupp: HTMLElement, vidVal: (filter: Filter) => voi
 //    Klick på något annat ska inte göra något.
 export function kopplaLaggTill(container: HTMLElement, vidLaggTill: (id: number) => void): void {
   container.addEventListener("click", (handelse) => {
-    const knapp = handelse.target.closest("button.lagg-i-order");
+    if (!(handelse.target instanceof HTMLElement)) {
+      return;
+    }
+    const knapp = handelse.target.closest<HTMLButtonElement>("button.lagg-i-order");
     if (!knapp) {
       return;
     }
