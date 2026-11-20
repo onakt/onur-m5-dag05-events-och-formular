@@ -79,15 +79,17 @@ Skriv `visaFel` (skapar `p.falt-fel`, sätter `aria-invalid` och `aria-described
 
 Öppna `kontakt.html`. Testa: skicka tomt, fyll i felaktig e-post, rätta, skicka giltigt. Testa sedan *enbart med tangentbordet*, och slå på en skärmläsare (NVDA på Windows) i två minuter och lyssna på ett felmeddelande. Skriv i en kommentar vad du hörde.
 
+**Vad jag hörde**: Jag använde den inbyggda narratorn med win + ctrl + enter. Den läser upp felmeddelanden :D
+
 ## Kontrollista: så vet du att du är klar
 
-- [ ] Alla tester på `tests.html` är gröna, utom eventuellt fördjupningen (order).
-- [ ] Alla fem filterknappar fungerar, och `aria-pressed` följer den valda knappen.
-- [ ] Du använder event delegation, med en lyssnare på parent.
-- [ ] `kontakt.html` visar felmeddelanden vid blur och submit, och fokus flyttas till första felet.
-- [ ] Felmeddelanden är text (inte bara färg) och kopplade med `aria-describedby`.
-- [ ] Du har testat både filter och formulär med bara tangentbordet.
-- [ ] Du har gjort minst sex commits.
+- [X] Alla tester på `tests.html` är gröna, utom eventuellt fördjupningen (order).
+- [X] Alla fem filterknappar fungerar, och `aria-pressed` följer den valda knappen.
+- [X] Du använder event delegation, med en lyssnare på parent.
+- [X] `kontakt.html` visar felmeddelanden vid blur och submit, och fokus flyttas till första felet.
+- [X] Felmeddelanden är text (inte bara färg) och kopplade med `aria-describedby`.
+- [X] Du har testat både filter och formulär med bara tangentbordet.
+- [X] Du har gjort minst sex commits.
 
 ## Tips om du fastnar
 
